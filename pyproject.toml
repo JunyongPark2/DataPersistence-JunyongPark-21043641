@@ -1,0 +1,9 @@
+[project]
+name = "sampleorder-persistence"
+version = "0.1.0"
+description = "S-Semi 반도체 시료/주문 데이터 영속성 계층 (JSON 파일 기반 CRUD)"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
