@@ -23,6 +23,15 @@ python main.py
 
 두 번 이상 실행해 `data/samples.json`, `data/orders.json`에 저장된 데이터가 유지되는지 확인할 수 있습니다.
 
+## 다른 PoC와 연동하기
+
+`main.py`는 데이터 디렉터리를 `--data-dir` 같은 옵션 없이 이 저장소의 `data/`로 고정합니다.
+DummyDataGenerator/DataMonitor와 같은 데이터를 공유하려면, 이 저장소의 `data/` 디렉터리를
+DummyDataGenerator가 만든 `data/samples.json`, `data/orders.json`으로 교체하거나,
+DataMonitor 실행 시 `--data-dir`을 이 저장소의 `data/` 경로로 지정하세요. 각 프로젝트가
+기본값으로는 각자의 로컬 `data/`만 바라보기 때문에, 아무 옵션 없이 세 프로젝트를 따로 실행하면
+서로 다른 데이터를 갖게 됩니다.
+
 ## 테스트
 
 ```bash

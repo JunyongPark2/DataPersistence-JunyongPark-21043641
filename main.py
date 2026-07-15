@@ -57,8 +57,11 @@ def main() -> None:
         print(f"  {o.order_id} | {o.customer_name} | {o.quantity} ea")
 
     print("\n=== 시료 재고 차감 (update) ===")
-    updated_sample = sample_repo.update(first_sample.sample_id, stock=first_sample.stock - order.quantity)
-    print(f"재고 변경됨: {updated_sample.sample_id} | 재고 {updated_sample.stock} ea")
+    if first_sample.stock >= order.quantity:
+        updated_sample = sample_repo.update(first_sample.sample_id, stock=first_sample.stock - order.quantity)
+        print(f"재고 변경됨: {updated_sample.sample_id} | 재고 {updated_sample.stock} ea")
+    else:
+        print(f"재고 부족으로 차감하지 않음: {first_sample.sample_id} | 현재 재고 {first_sample.stock} ea")
 
     print(f"\ndata/samples.json, data/orders.json 에 저장되었습니다. "
           f"프로그램을 다시 실행하면 위 데이터가 그대로 유지됩니다.")

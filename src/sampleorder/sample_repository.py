@@ -41,6 +41,8 @@ class SampleRepository:
         return [s for s in self.list_all() if keyword_lower in s.name.lower()]
 
     def update(self, sample_id: str, **fields) -> Sample:
+        if "stock" in fields and fields["stock"] < 0:
+            raise ValueError(f"stock cannot be negative: {fields['stock']}")
         records = self._store.load()
         for record in records:
             if record["sample_id"] == sample_id:
